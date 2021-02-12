@@ -59,10 +59,11 @@ export default (props) => {
         for (const field in jobDetails) {
             if(typeof jobDetails[field] === 'string' && !jobDetails[field]) return;
         }
-        if(jobDetails.skills.length) return;
-        setLoading(true);
-        await props.postJob(jobDetails);
-        closeModal();
+        if(jobDetails.skills.length){
+            setLoading(true);
+            await props.postJob(jobDetails);
+            closeModal();
+        }
     }
 
     const closeModal = () => {
